@@ -21,7 +21,23 @@ io.sockets.on("connection", socket => {
   socket.on("disconnect", () => {
     io.sockets.emit("disconnect", socket.id);
     players = players.filter(player => player.id !== socket.id);
+    console.log("a user has disconnected");
   });
+    
+    
+  socket.on('button', buttonMsg)
+  socket.on('button2', buttonMsg2)
+
+  function buttonMsg(buttonData) {
+        socket.broadcast.emit('button', buttonData);
+        console.log("value 1: ", buttonData);
+    }
+    
+    
+  function buttonMsg2(buttonData2) {
+        socket.broadcast.emit('button2', buttonData2);
+        console.log("value 2: ", buttonData2);
+    }
 });
 
 function updateGame() {

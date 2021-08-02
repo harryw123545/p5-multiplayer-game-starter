@@ -1,16 +1,69 @@
 const socket = io.connect('http://localhost');
+let button1, button2;
+let val1 = 0;
+let val2 = 0;
+
 
 let players = [];
 socket.on("heartbeat", players => updatePlayers(players));
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(400, 400);
+    
+  button1 = createButton('option 1');
+  button2 = createButton('option 2'); 
+    
+  button1.position(0, 0);
+  button2.position(width/2, 0);
+    
+  button1.mousePressed(buttonCount1);
+  button2.mousePressed(buttonCount2);
+    
+  socket.on('button', newButton);
+  socket.on('button2', newButton2);
 }
 
 function draw() {
-  background(220);
+  //background(220);
   players.forEach(player => player.draw());
+    
 }
+
+
+function newButton(buttonData) {
+    fill(255, 100, 100);
+    circle(0, height/2, buttonData % 200);
+    console.log("received: ", buttonData);
+
+}
+
+function newButton2(buttonData2) {
+    fill(255, 100, 100);
+    circle(width/2, height/2, buttonData2 % 200);
+    console.log("received: ", buttonData2);
+
+}
+
+function buttonCount1() {
+ 
+  var buttonData = val1;
+    
+  val1++;
+  
+  console.log("sent val1: ", buttonData);
+  socket.emit('button', buttonData);
+}
+
+function buttonCount2() {
+ 
+  var buttonData2 = val2;
+    
+  val2++;
+  
+  console.log("sent val2: ", buttonData2);
+  socket.emit('button2', buttonData2);
+}
+
 
 function updatePlayers(serverPlayers) {
   let removedPlayers = players.filter(p => serverPlayers.findIndex(s => s.id == p.id));
