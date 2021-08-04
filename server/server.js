@@ -12,9 +12,6 @@ let io = socket(server);
 
 let players = [];
 
-let totalbutton1 = 0;
-let totalbutton2 = 0;
-
 setInterval(updateGame, 16);
 
 io.sockets.on("connection", socket => {
@@ -28,26 +25,19 @@ io.sockets.on("connection", socket => {
   });
     
     
-  socket.on('button', buttonMsg);
-  //socket.on('button', buttonMsg2)
+  socket.on('button', buttonMsg)
+  socket.on('button2', buttonMsg2)
 
   function buttonMsg(buttonData) {
-      if(buttonData == 1){
-          totalbutton1++;
-      }
-      if(buttonData == 2){
-          totalbutton2++;
-      }
-      let update = {"totalButton1": totalbutton1, "totalButton2":totalbutton2};
-        socket.broadcast.emit('blob', update);
-        console.log(update);
+        socket.broadcast.emit('button', buttonData);
+        console.log("value 1: ", buttonData);
     }
     
     
-//  function buttonMsg2(buttonData2) {
-//        socket.broadcast.emit('button2', buttonData2);
-//        console.log("value 2: ", buttonData2);
-//    }
+  function buttonMsg2(buttonData2) {
+        socket.broadcast.emit('button2', buttonData2);
+        console.log("value 2: ", buttonData2);
+    }
 });
 
 function updateGame() {

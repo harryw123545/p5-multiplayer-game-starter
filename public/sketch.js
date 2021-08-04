@@ -8,9 +8,7 @@ let val = [];
 
 
 let players = [];
-socket.on("blob", (blob)=>{
-          console.log(blob);
-          });
+socket.on("heartbeat", players => updatePlayers(players));
 
 function setup() {
   createCanvas(400, 400);
@@ -30,8 +28,8 @@ function setup() {
 //  button1.mousePressed(buttonCount1);
 //  button2.mousePressed(buttonCount2);
     
-  //socket.on('button', newButton);
-  //socket.on('button2', newButton2);
+  socket.on('button', newButton);
+  socket.on('button2', newButton2);
 }
 
 function draw() {
@@ -57,24 +55,28 @@ function newButton2(buttonData2) {
 
 function buttonCount1() {
  
-  //var buttonData = val1;
+  var buttonData = val1;
     
+<<<<<<< HEAD
   //val1++;
     
   //console.log(val1);
+=======
+  val1++;
+>>>>>>> parent of 6cc6ad6 (fixed button - added new files for animation)
   
-  //console.log("sent val1: ", buttonData);
-  socket.emit('button', 1);
+  console.log("sent val1: ", buttonData);
+  socket.emit('button', buttonData);
 }
 
 function buttonCount2() {
  
-  //var buttonData2 = val2;
+  var buttonData2 = val2;
     
-  //val2++;
+  val2++;
   
-  //console.log("sent val2: ", buttonData2);
-  socket.emit('button', 2);
+  console.log("sent val2: ", buttonData2);
+  socket.emit('button2', buttonData2);
 }
 
 
