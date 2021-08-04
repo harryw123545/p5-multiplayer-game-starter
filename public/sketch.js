@@ -58,9 +58,13 @@ function buttonCount1() {
   var buttonData = val1;
     
 <<<<<<< HEAD
+<<<<<<< HEAD
   //val1++;
     
   //console.log(val1);
+=======
+  val1++;
+>>>>>>> parent of 6cc6ad6 (fixed button - added new files for animation)
 =======
   val1++;
 >>>>>>> parent of 6cc6ad6 (fixed button - added new files for animation)
