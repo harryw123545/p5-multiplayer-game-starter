@@ -3,6 +3,9 @@ const socket = io.connect('http://localhost');
 let players = [];
 
 let val1, val2;
+let population;
+let info;
+var osc = 0;
 
 
 function setup() {
@@ -23,5 +26,9 @@ function draw() {
     
   circle(100,150,val1%100);
   circle(200,150,val2%100);    
+  // Display the faces
+  population.display();
+  population.rollover(mouseX, mouseY);
+  info.html("Generation #:" + population.getGenerations());
 }
 
