@@ -6,6 +6,8 @@ let population;
 let info;
 var osc = 0;
 
+let val1, val2;
+
 
 function setup() {
     socket.on("blob", (blob)=>{
@@ -35,6 +37,9 @@ function draw() {
   population.display();
   population.rollover(mouseX, mouseY);
   info.html("Generation #:" + population.getGenerations());
+    
+  circle(100,150,val1%100);
+  circle(200,150,val2%100);    
 }
 
 // If the button is clicked, evolve next generation

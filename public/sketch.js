@@ -1,6 +1,6 @@
 const socket = io.connect('http://localhost');
-//let button1, button2;
-let button = [];
+let button1, button2;
+//let button = [];
 let val1 = 0;
 let val2 = 0;
 
@@ -15,14 +15,14 @@ socket.on("blob", (blob)=>{
 function setup() {
   createCanvas(400, 400);
     
-//  button1 = createButton('option 1');
-//  button2 = createButton('option 2'); 
+  button1 = createButton('option 1');
+  button2 = createButton('option 2'); 
 
-  for(let i = 0; i < 10; i++){
-      button[i] = createButton('option ' + i + '');
-      button[i].position(i * 60 + 60, 0, 30);
-      button[i].mousePressed(buttonCount);
-  }
+//  for(let i = 0; i < 10; i++){
+//      button[i] = createButton('option ' + i + '');
+//      button[i].position(i * 60 + 60, 0, 30);
+//      button[i].mousePressed(buttonCount);
+//  }
     
 //  button1.position(0, 0);
 //  button2.position(width/2, 0);
@@ -55,7 +55,7 @@ function newButton2(buttonData2) {
 
 }
 
-function buttonCount() {
+function buttonCount1() {
  
   //var buttonData = val1;
     
