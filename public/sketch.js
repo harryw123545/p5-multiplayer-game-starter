@@ -59,9 +59,13 @@ function buttonCount1() {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   //val1++;
     
   //console.log(val1);
+=======
+  val1++;
+>>>>>>> parent of 6cc6ad6 (fixed button - added new files for animation)
 =======
   val1++;
 >>>>>>> parent of 6cc6ad6 (fixed button - added new files for animation)
